@@ -1,24 +1,74 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## データベース定義
 
-Things you may want to cover:
+column = カラム名
 
-* Ruby version
+type = データ型
 
-* System dependencies
 
-* Configuration
 
-* Database creation
 
-* Database initialization
+## articlesテーブル
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+|colimn   | type      |index| null| unique|
+|---------|-----------|------|-----|-------|
+| title   | string    | yes  |false|       |
+| language | string    |      |false|       |
+| body    | text      |      |false|       |
+| user_id | references| yes  |false|       |
 
-* Deployment instructions
+###articlesテーブルに関するアソシエーション
+> belongs_to :user
+> has_many :cheers through: :cheer_users
+> has_many :cheer_users
 
-* ...
+
+
+
+## usersテーブル
+
+| colimn  | type   | index| null| unique|
+|---------|--------|------|-----|-------|
+
+
+### usersテーブルに関するアソシエーション
+> has_many : articles
+> has_many : cheers through: :cheer_users
+> has_many : cheer_users
+### 追記(gem)
+
+> deviseのデフォルト設定を使用して、テーブルを生成する。
+
+
+
+## cheersテーブル
+
+| colimn    | type       | index| null| unique|
+|-----------|------------|------|-----|-------|
+
+
+###cheersテーブルに関するアソシエーション
+
+> belongs_to :article
+> belongs_to :user
+
+
+
+
+
+## article_usersテーブル
+
+
+| colimn    | type       | index| null| unique|
+|-----------|------------|------|-----|-------|
+| article_id| references | yes |false|       |
+| user_id   | references | yes |false|       |
+
+### group_usersテーブルに関するアソシエーション
+
+> belongs_to : article
+> belongs_to : user
+
+
