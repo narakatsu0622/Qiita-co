@@ -21,7 +21,9 @@ type = データ型
 
 ###articlesテーブルに関するアソシエーション
 > belongs_to :user
+
 > has_many :cheers through: :cheer_users
+
 > has_many :cheer_users
 
 
@@ -35,8 +37,11 @@ type = データ型
 
 ### usersテーブルに関するアソシエーション
 > has_many : articles
+
 > has_many : cheers through: :cheer_users
+
 > has_many : cheer_users
+
 ### 追記(gem)
 
 > deviseのデフォルト設定を使用して、テーブルを生成する。
@@ -52,6 +57,7 @@ type = データ型
 ###cheersテーブルに関するアソシエーション
 
 > belongs_to :article
+
 > belongs_to :user
 
 
@@ -69,4 +75,5 @@ type = データ型
 ### group_usersテーブルに関するアソシエーション
 
 > belongs_to : article
+
 > belongs_to : user
