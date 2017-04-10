@@ -15,16 +15,17 @@ type = データ型
 |colimn   | type      |index| null| unique|
 |---------|-----------|------|-----|-------|
 | title   | string    | yes  |false|       |
-| language | string    |      |false|       |
 | body    | text      |      |false|       |
 | user_id | references| yes  |false|       |
 
-###articlesテーブルに関するアソシエーション
+### articlesテーブルに関するアソシエーション
 > belongs_to :user
 
-> has_many :cheers through: :cheer_users
+> has_many : likes
 
-> has_many :cheer_users
+
+### 追記
+> acts as taggable on を導入して記事に対して対象言語のタグ付けを行う
 
 
 
@@ -38,9 +39,8 @@ type = データ型
 ### usersテーブルに関するアソシエーション
 > has_many : articles
 
-> has_many : cheers through: :cheer_users
+> has_many : cheers
 
-> has_many : cheer_users
 
 ### 追記(gem)
 
@@ -48,13 +48,15 @@ type = データ型
 
 
 
-## cheersテーブル
+## likesテーブル
 
 | colimn    | type       | index| null| unique|
 |-----------|------------|------|-----|-------|
+| article_id| references | yes |false|       |
+| user_id   | references | yes |false|       |
 
 
-###cheersテーブルに関するアソシエーション
+### likesテーブルに関するアソシエーション
 
 > belongs_to :article
 
@@ -64,16 +66,3 @@ type = データ型
 
 
 
-## article_usersテーブル
-
-
-| colimn    | type       | index| null| unique|
-|-----------|------------|------|-----|-------|
-| article_id| references | yes |false|       |
-| user_id   | references | yes |false|       |
-
-### group_usersテーブルに関するアソシエーション
-
-> belongs_to : article
-
-> belongs_to : user
