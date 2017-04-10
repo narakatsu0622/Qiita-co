@@ -39,7 +39,7 @@ type = データ型
 ### usersテーブルに関するアソシエーション
 > has_many : articles
 
-> has_many : articles, through : likes
+> has_many : likes
 
 
 ### 追記(gem)
@@ -61,6 +61,8 @@ type = データ型
 > belongs_to :article
 
 > belongs_to :user
+
+
 
 
 
