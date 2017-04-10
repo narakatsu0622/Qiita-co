@@ -39,7 +39,7 @@ type = データ型
 ### usersテーブルに関するアソシエーション
 > has_many : articles
 
-> has_many : cheers
+> has_many : articles, through : likes
 
 
 ### 追記(gem)
