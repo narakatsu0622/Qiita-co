@@ -39,7 +39,9 @@ type = データ型
 ### usersテーブルに関するアソシエーション
 > has_many : articles
 
-> has_many : likes
+> has_many : likes,  through: :like_users
+
+> has_many : like_users
 
 
 ### 追記(gem)
@@ -48,19 +50,36 @@ type = データ型
 
 
 
+## like_usersテーブル
+
+| colimn    | type       | index| null| unique|
+|-----------|------------|------|-----|-------|
+| like_id   | references | yes |false|       |
+| user_id   | references | yes |false|       |
+
+
+### like_usersテーブルに関するアソシエーション
+
+> belongs_to :like
+
+> belongs_to :user
+
 ## likesテーブル
 
 | colimn    | type       | index| null| unique|
 |-----------|------------|------|-----|-------|
-| article_id| references | yes |false|       |
-| user_id   | references | yes |false|       |
+| article_id | references | yes |false|       |
+
 
 
 ### likesテーブルに関するアソシエーション
 
 > belongs_to :article
 
-> belongs_to :user
+> belongs_to :like_users
+
+
+
 
 
 
