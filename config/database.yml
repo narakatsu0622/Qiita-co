@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: Qiita-co_production
-  username: Qiita-co
-  password: <%= ENV['QIITA-CO_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
