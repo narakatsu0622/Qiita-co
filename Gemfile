@@ -62,3 +62,9 @@ group :production do
   gem 'unicorn'
 end
 gem 'annotate'
+gem 'bootstrap-datepicker-rails'
+gem 'bootstrap-sass'
+gem 'erb2haml'
+gem 'font-awesome-rails'
+gem 'gon'
+gem 'haml-rails'
